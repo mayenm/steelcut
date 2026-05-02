@@ -8,6 +8,10 @@ export interface ButtonProps
   asChild?: boolean
 }
 
+type ButtonChildProps = {
+  className?: string
+}
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "default", size = "default", asChild = false, ...props }, ref) => {
     const baseStyles = "inline-flex items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wider font-heading"
@@ -27,11 +31,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     if (asChild && React.isValidElement(props.children)) {
-      const child = props.children as React.ReactElement<any>;
+      const child = props.children as React.ReactElement<ButtonChildProps>
       return React.cloneElement(child, {
         className: cn(baseStyles, variants[variant], sizes[size], className, child.props.className),
-        ref
-      });
+      })
     }
 
     return (

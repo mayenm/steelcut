@@ -18,6 +18,7 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://steelcut.ke"),
   title: {
     template: "%s | Steelcut KE",
     default: "Steelcut KE — Custom Metal Fabrication in Nairobi, Kenya",

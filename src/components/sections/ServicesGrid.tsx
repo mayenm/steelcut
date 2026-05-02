@@ -232,15 +232,37 @@ function ServiceCard({
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleEnter = () => {
-    gsap.to(cardRef.current?.querySelector("img"), { scale: 1.06, duration: 0.7, ease: "power2.out" });
-    gsap.to(overlayRef.current, { opacity: 0.88, duration: 0.4 });
-    gsap.to(contentRef.current?.querySelector("p"), { opacity: 1, y: 0, duration: 0.4 });
+    const image = cardRef.current?.querySelector("img");
+    const description = contentRef.current?.querySelector("p");
+
+    if (image) {
+      gsap.to(image, { scale: 1.06, duration: 0.7, ease: "power2.out" });
+    }
+
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, { opacity: 0.88, duration: 0.4 });
+    }
+
+    if (description) {
+      gsap.to(description, { opacity: 1, y: 0, duration: 0.4 });
+    }
   };
 
   const handleLeave = () => {
-    gsap.to(cardRef.current?.querySelector("img"), { scale: 1, duration: 0.7, ease: "power2.out" });
-    gsap.to(overlayRef.current, { opacity: 0.55, duration: 0.4 });
-    gsap.to(contentRef.current?.querySelector("p"), { opacity: 0, y: 8, duration: 0.3 });
+    const image = cardRef.current?.querySelector("img");
+    const description = contentRef.current?.querySelector("p");
+
+    if (image) {
+      gsap.to(image, { scale: 1, duration: 0.7, ease: "power2.out" });
+    }
+
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, { opacity: 0.55, duration: 0.4 });
+    }
+
+    if (description) {
+      gsap.to(description, { opacity: 0, y: 8, duration: 0.3 });
+    }
   };
 
   return (

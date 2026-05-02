@@ -206,7 +206,7 @@ export function Testimonials() {
                 userSelect: "none",
               }}
             >
-              "
+              &ldquo;
             </span>
 
             <p
